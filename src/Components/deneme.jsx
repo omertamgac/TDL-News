@@ -1,4 +1,5 @@
 import  { useEffect, useState } from 'react';
+import MyCard from "./Card"
 
 const NewsComponent = () => {
   const [articles, setArticles] = useState([]);
@@ -14,19 +15,31 @@ const NewsComponent = () => {
     fetchNews();
   }, []);
 
+  
+  function CardMaker(prop)
+  {
+    return(<MyCard
+      width={"60%"}
+      src={prop.urlToImage}
+      name={prop.title}
+      text={prop.description}
+    
+    />)
+  }
+
   return (
-    <div>
-      <h1>Top News</h1>
-      <ul>
-        {articles.map((article, index) => (
-          <li key={index}>
-            <h2>{article.title}</h2>
-            <p>{article.description}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {articles.map((article, index) => (
+        <CardMaker
+          key={index}
+          urlToImage={article.urlToImage}
+          title={article.title}
+          description={article.description}
+        />
+      ))}
+    </>
   );
+  
 };
 
 export default NewsComponent;
