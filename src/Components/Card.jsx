@@ -6,7 +6,8 @@ function BasicCard(prop) {
       className="mb-4 mt-5" 
       style={{ 
         width: prop.width, 
-        margin: '0 auto', 
+        margin: '5%', 
+        float:'left'
       }}
     >
       <Card.Img variant="top" src={prop.src} alt="News Thumbnail" />
@@ -14,7 +15,7 @@ function BasicCard(prop) {
       <Card.Title 
   style={{ 
     fontFamily: "'Roboto Slab', serif", 
-    fontSize: '1.5rem', 
+    fontSize: '1.6rem', 
     fontWeight: 'bold' 
   }}
 >
@@ -22,10 +23,10 @@ function BasicCard(prop) {
 </Card.Title>
 <Card.Text 
   style={{ 
-    fontFamily: "'Georgia', serif", // BBC metin fontuna yakın
+    fontFamily: "'Georgia', serif", 
     fontSize: '1rem',
     lineHeight: '1.6',
-    color: '#444' // Okunaklı bir gri ton
+    color: '#444' 
   }}
 >
  {prop.text}

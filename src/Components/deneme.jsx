@@ -1,9 +1,10 @@
-import  { useEffect, useState } from 'react';
-import MyCard from "./Card"
+import { useEffect, useState } from 'react';
+import MyCard from "./Card";
+import './NewsComponent.css'; // Yeni CSS dosyasını dahil ediyoruz
 
 const NewsComponent = () => {
   const [articles, setArticles] = useState([]);
-//deneme
+
   useEffect(() => {
     const fetchNews = async () => {
       const response = await fetch(
@@ -15,20 +16,25 @@ const NewsComponent = () => {
     fetchNews();
   }, []);
 
-  
-  function CardMaker(prop)
-  {
-    return(<MyCard
-      width={"60%"}
-      src={prop.urlToImage}
-      name={prop.title}
-      text={prop.description}
-    
-    />)
+  // Description uzunluğunu kontrol ederek kesiyoruz
+  function truncateText(text, maxLength) {
+    if (!text) return ""; // Eğer description yoksa boş döner
+    return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
+  }
+
+  function CardMaker(prop) {
+    return (
+      <MyCard
+        width={"35%"}
+        src={prop.urlToImage}
+        name={prop.title}
+        text={truncateText(prop.description, 164)} // 164 karakter sınırı
+      />
+    );
   }
 
   return (
-    <>
+    <div className="news-container">
       {articles.map((article, index) => (
         <CardMaker
           key={index}
@@ -37,9 +43,8 @@ const NewsComponent = () => {
           description={article.description}
         />
       ))}
-    </>
+    </div>
   );
-  
 };
 
 export default NewsComponent;

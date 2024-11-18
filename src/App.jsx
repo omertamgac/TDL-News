@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./Components/MyNavBar";
 import MyCard from "./Components/Card";
 import Deneme from "./Components/deneme";
+import Footer from "./Components/Footer";
 import { Container, Row, Col } from 'react-bootstrap';
 
 
@@ -29,13 +30,12 @@ function App() {
         text="Deneme yazısı"
       />
     </Col>
-    <Col style={{ backgroundColor: '#d4edda' }} xs={8}>
-      {/* %75 genişlik */}
+    <Col style={{ backgroundColor: '#d4edda' }} xs={9}>
       <Deneme />
     </Col>
   </Row>
 </Container>
-
+  <Footer/>
     </>
   );
 }

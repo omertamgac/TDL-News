@@ -8,10 +8,23 @@ function NavScrollExample() {
   return (
     <Navbar expand="lg" className="bg-primary">
       <Container fluid className="d-flex justify-content-center">
-        <Navbar.Brand href="#" className="text-white ms-5">TDR NEWS</Navbar.Brand>
+        <Navbar.Brand
+        style={{ 
+          fontFamily: "'Georgia', serif", 
+          fontSize: '2rem',
+          color: '#444' 
+        }}
+        
+        href="#" className="text-white ms-5">TDR NEWS</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav className="d-flex justify-content-center w-100">
+       
+          <Nav style={{ 
+    fontFamily: "'Georgia', serif", 
+    fontSize: '1.1rem',
+    color: '#444' 
+  }} 
+  className="d-flex justify-content-center w-100">
             <Nav.Link href="#action1" className="text-white">Home</Nav.Link>
             <Nav.Link href="#action2" className="text-white">General</Nav.Link>
             <Nav.Link href="#action3" className="text-white">Business</Nav.Link>
@@ -25,7 +38,7 @@ function NavScrollExample() {
             <Form.Control
               type="search"
               placeholder="Search for news"
-              className="me-2"
+              className="me-3"
               aria-label="Search"
               style={{ width: '500px' }}
             />

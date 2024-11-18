@@ -1,0 +1,13 @@
+.news-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Ortalayarak hizalama */
+  }
+  
+  .card-img-top {
+    width: 100%; /* Kart genişliğine tam oturur */
+    height: 300px; /* Sabit bir yükseklik */
+    object-fit: fit; 
+    border-radius: 8px; 
+  }
+  
