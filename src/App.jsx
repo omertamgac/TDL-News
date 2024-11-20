@@ -15,7 +15,8 @@ function App() {
       <Navbar />
       <Container fluid>
   <Row>
-    <Col style={{ backgroundColor: '#f8d7da' }} xs={3}>
+    <Col style={{backgroundColor:"black",
+    backgroundImage: `url('/src/assets/shattered.png')`}} xs={3}>
       {/* %25 genişlik */}
       <MyCard
         width={"70%"}
@@ -30,7 +31,8 @@ function App() {
         text="Deneme yazısı"
       />
     </Col>
-    <Col style={{ backgroundColor: '#d4edda' }} xs={9}>
+    <Col style={{backgroundColor:"white",
+    backgroundImage: `url('/src/assets/shattered-dark.png')`}} xs={9}>
       <Deneme />
     </Col>
   </Row>

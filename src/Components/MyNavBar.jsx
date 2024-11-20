@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 
 function NavScrollExample() {
   return (
-    <Navbar expand="lg" className="bg-primary">
+    <Navbar expand="lg" className="bg-dark">
       <Container fluid className="d-flex justify-content-center">
         <Navbar.Brand
         style={{ 
@@ -16,7 +16,9 @@ function NavScrollExample() {
         }}
         
         href="#" className="text-white ms-5">TDR NEWS</Navbar.Brand>
-        <Navbar.Toggle aria-controls="navbarScroll" />
+        <Navbar.Toggle aria-controls="navbarScroll" style={{ 
+          fontSize: '1rem',
+        }} className='bg-light' />
         <Navbar.Collapse id="navbarScroll">
        
           <Nav style={{ 
