@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import MyCard from "./Card";
-import './NewsComponent.css'; // Yeni CSS dosyasını dahil ediyoruz
+import '../style/NewsComponent.css'; 
 
 const NewsComponent = (prop) => {
   const [articles, setArticles] = useState([]);
+  
 
   useEffect(() => {
       const fetchNews = async () => {
@@ -22,19 +23,18 @@ const NewsComponent = (prop) => {
     }, [prop.category]);
   
 
-  // Description uzunluğunu kontrol ederek kesiyoruz
   function truncateText(text, maxLength) {
-    if (!text) return ""; // Eğer description yoksa boş döner
+    if (!text) return ""; 
     return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
   }
 
   function CardMaker(prop) {
     return (
       <MyCard
-        width={"35%"}
+        width={"30%"}
         src={prop.urlToImage}
         name={prop.title}
-        text={truncateText(prop.description, 164)} // 164 karakter sınırı
+        text={truncateText(prop.description, 164)}
       />
     );
   }

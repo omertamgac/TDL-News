@@ -21,9 +21,8 @@ const SportTen = () => {
     }, []);
 
 
-  // Description uzunluğunu kontrol ederek kesiyoruz
   function truncateText(text, maxLength) {
-    if (!text) return ""; // Eğer description yoksa boş döner
+    if (!text) return ""; 
     return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
   }
 
@@ -41,8 +40,7 @@ const SportTen = () => {
   return (
     
     <div className="news-container">
-      
-      <h1 style={{ 
+    <h1 style={{ 
     fontFamily: "'Roboto Slab', serif", 
     fontSize: '2rem', 
     fontWeight: 'bold', 
