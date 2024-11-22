@@ -1,43 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from "./Components/MyNavBar";
-import MyCard from "./Components/Card";
-import Deneme from "./Components/deneme";
 import Footer from "./Components/Footer";
-import { Container, Row, Col } from 'react-bootstrap';
-
-
-
-
+import Main from "./Components/Main";
+import Category from "./pages/CategoryResult";
+import Search from "./pages/SearchResult";
+import { Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
-    <>
+    <> 
       <Navbar />
-      <Container fluid>
-  <Row>
-    <Col style={{backgroundColor:"black",
-    backgroundImage: `url('/src/assets/shattered.png')`}} xs={3}>
-      {/* %25 genişlik */}
-      <MyCard
-        width={"70%"}
-        src="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        name="Başlığımız"
-        text="Deneme yazısı"
-      />
-      <MyCard
-         width={"70%"}
-        src="https://images.pexels.com/photos/346529/pexels-photo-346529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-        name="Başlığımız"
-        text="Deneme yazısı"
-      />
-    </Col>
-    <Col style={{backgroundColor:"white",
-    backgroundImage: `url('/src/assets/shattered-dark.png')`}} xs={9}>
-      <Deneme />
-    </Col>
-  </Row>
-</Container>
-  <Footer/>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/category" element={<Category />} />
+        <Route path="/search" element={<Search />} />
+      </Routes>
+      <Footer />
     </>
   );
 }

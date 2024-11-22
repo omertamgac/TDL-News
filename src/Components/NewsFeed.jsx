@@ -2,19 +2,25 @@ import { useEffect, useState } from 'react';
 import MyCard from "./Card";
 import './NewsComponent.css'; // Yeni CSS dosyasını dahil ediyoruz
 
-const NewsComponent = () => {
+const NewsComponent = (prop) => {
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    const fetchNews = async () => {
-      const response = await fetch(
-        `https://newsapi.org/v2/top-headlines?country=us&apiKey=${import.meta.env.VITE_NEWS_API_KEY}`
-      );
-      const data = await response.json();
-      setArticles(data.articles);
-    };
-    fetchNews();
-  }, []);
+      const fetchNews = async () => {
+        try {
+          const response = await fetch(
+            `https://newsdata.io/api/1/latest?apikey=${import.meta.env.VITE_NEWSIO_API_KEY}&category=${prop.category}&language=en`
+          );
+          if (!response.ok) throw new Error("Failed to fetch news");
+          const data = await response.json();
+          setArticles(data.results || []); 
+        } catch (error) {
+          console.error("Error fetching news:", error);
+        }
+      };
+      fetchNews();
+    }, [prop.category]);
+  
 
   // Description uzunluğunu kontrol ederek kesiyoruz
   function truncateText(text, maxLength) {
@@ -37,10 +43,10 @@ const NewsComponent = () => {
     <div className="news-container">
       {articles.map((article, index) => (
         <CardMaker
-          key={index}
-          urlToImage={article.urlToImage}
-          title={article.title}
-          description={article.description}
+        key={index}
+        urlToImage={article.image_url}
+        title={article.title}
+        description={article.description}
         />
       ))}
     </div>

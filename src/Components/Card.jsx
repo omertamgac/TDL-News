@@ -7,7 +7,8 @@ function BasicCard(prop) {
       style={{ 
         width: prop.width, 
         margin: '5%', 
-        float:'left'
+        float:'left',
+        backgroundColor: "#181a1b",
       }}
     >
       <Card.Img variant="top" src={prop.src} alt="News Thumbnail" />
@@ -16,7 +17,9 @@ function BasicCard(prop) {
   style={{ 
     fontFamily: "'Roboto Slab', serif", 
     fontSize: '1.6rem', 
-    fontWeight: 'bold' 
+    fontWeight: 'bold', 
+    backgroundColor: "#181a1b",
+    color:'white'
   }}
 >
   {prop.name}
@@ -26,7 +29,8 @@ function BasicCard(prop) {
     fontFamily: "'Georgia', serif", 
     fontSize: '1rem',
     lineHeight: '1.6',
-    color: '#444' 
+    color: '#bdb7af' ,
+    backgroundColor: "#181a1b",
   }}
 >
  {prop.text}
