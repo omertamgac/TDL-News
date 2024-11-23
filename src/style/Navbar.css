@@ -37,12 +37,12 @@
   .navbar-form .form-control::placeholder {
     color: #ccc;
   }
-  /* Navbar.css */
+ 
 
-/* Search bar input */
+
 .form-control:focus {
-  border-color: #ffd700 !important; /* Sarı border */
-  box-shadow: 0 0 5px rgba(255, 215, 0, 0.8) !important; /* Sarı renkli glow (ışık efekti) */
+  border-color: #ffd700 !important; 
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.8) !important; 
 }
 
 
