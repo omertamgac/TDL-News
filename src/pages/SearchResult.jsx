@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import MyCard from "../Components/Card";
 import '../style/NewsComponent.css';
 import '../style/search.css';
 import { Container, Row, Col } from "react-bootstrap";
 
-
 const SearchResult = () => {
   const [articles, setArticles] = useState([]);
   const location = useLocation();
-  
+  const nav = useNavigate(); 
   const query = new URLSearchParams(location.search).get('query');
 
   useEffect(() => {
@@ -30,6 +29,10 @@ const SearchResult = () => {
     }
   }, [query]);
 
+  const ToDetails = (article) => {
+    nav("/details", { state: article });
+  };
+
   function truncateText(text, maxLength) {
     if (!text) return ""; 
     return text.length > maxLength ? text.substring(0, maxLength) + "..." : text;
@@ -38,53 +41,52 @@ const SearchResult = () => {
   function CardMaker(prop) {
     return (
       <MyCard
-        width={"35%"}
+        width={"80%"}
         src={prop.urlToImage}
         name={prop.title}
-        text={truncateText(prop.description, 164)} 
+        text={truncateText(prop.description, 164)}
+        onClick={() => ToDetails(prop.onClick)} 
       />
     );
   }
 
   return (
     <>
-    <Container fluid>
-    <Row style={{
+      <Container fluid>
+  <Row
+    style={{
       backgroundColor: "black",
-      backgroundImage: `url('/src/assets/shattered-dark.png')`
-    }}>
-      <Col md={1}/>
-      <Col md={10}
-        >
+      backgroundImage: `url('/src/assets/shattered-dark.png')`,
+      minHeight: "100vh", 
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    }}
+  >
+    {articles.length > 0 ? (
+      articles.map((article, index) => (
+        <Col key={index} md={4} sm={6} xs={12} className="mb-4 d-flex justify-content-center">
+          <CardMaker
+            urlToImage={article.image_url}
+            title={article.title}
+            description={article.description}
+            onClick={article} 
+          />
+        </Col>
+      ))
+    ) : (
+      <div className="notFoundContainer text-center">
+        <div className="notFoundIcon">🔍</div>
+        <p className="notFoundResult">
+          We could not find any news for <strong>{query}</strong>.
+        </p>
+        <p className="notFoundSuggestion">Try searching for something else!</p>
+      </div>
+    )}
+  </Row>
+</Container>
 
-{articles.length > 0 ? (
-  articles.map((article, index) => (
-    <CardMaker
-    key={index}
-    urlToImage={article.image_url}
-    title={article.title}
-    description={article.description}
-    />
-  ))
-) : (
-  <div className="notFoundContainer">
-           <div className="notFoundIcon">🔍</div>
-           <p className="notFoundResult">We could not find any news for <strong>{query}</strong>.</p>
-           <p className="notFoundSuggestion">Try searching for something else!</p>
-         </div>
-       )}
-
-
-        
-      </Col>
-      <Col md={1}/>
-    </Row>
-  </Container>
-    
-      
-       </>
-      
-   
+    </>
   );
 };
 

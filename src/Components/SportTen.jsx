@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import MyCard from "./Card";
+import { useNavigate } from 'react-router-dom';
 
 const SportTen = () => {
     const [articles, setArticles] = useState([]);
+    const nav =useNavigate();
+
   
     useEffect(() => {
       const fetchNews = async () => {
@@ -19,7 +22,9 @@ const SportTen = () => {
       };
       fetchNews();
     }, []);
-
+    const ToDetails=(article)=>{
+      nav("/details",{state:article})
+    }
 
   function truncateText(text, maxLength) {
     if (!text) return ""; 
@@ -32,7 +37,8 @@ const SportTen = () => {
         width={"70%"}
         src={prop.urlToImage}
         name={prop.title}
-        text={truncateText(prop.description, 164)} 
+        text={truncateText(prop.description, 164)}
+        onClick={() => ToDetails(prop.onClick)}
       />
     );
   }
@@ -54,6 +60,7 @@ const SportTen = () => {
           urlToImage={article.image_url}
           title={article.title}
           description={article.description}
+          onClick={article}
         />
       ))}
     </div>

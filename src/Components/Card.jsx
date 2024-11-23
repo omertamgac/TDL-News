@@ -5,10 +5,12 @@ import defaultImage from "../assets/TDL-Brand.png";
 function BasicCard(prop) {
   return (
     <Card 
-      className="mb-4 mt-5" 
+      className="mb-4 mt-5 clickable-card" 
       style={{ 
         width: prop.width,
+        cursor: prop.onClick ? "pointer" : "default", 
       }}
+      onClick={prop.onClick} 
     >
       <Card.Img 
         variant="top" 

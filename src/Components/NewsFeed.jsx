@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import MyCard from "./Card";
 import '../style/NewsComponent.css'; 
+import { useNavigate } from 'react-router-dom';
 
 const NewsComponent = (prop) => {
   const [articles, setArticles] = useState([]);
-  
+  const nav =useNavigate();
 
   useEffect(() => {
       const fetchNews = async () => {
@@ -21,7 +22,9 @@ const NewsComponent = (prop) => {
       };
       fetchNews();
     }, [prop.category]);
-  
+    const ToDetails=(article)=>{
+      nav("/details",{state:article})
+    }
 
   function truncateText(text, maxLength) {
     if (!text) return ""; 
@@ -35,6 +38,7 @@ const NewsComponent = (prop) => {
         src={prop.urlToImage}
         name={prop.title}
         text={truncateText(prop.description, 164)}
+        onClick={() => ToDetails(prop.onClick)}
       />
     );
   }
@@ -47,6 +51,7 @@ const NewsComponent = (prop) => {
         urlToImage={article.image_url}
         title={article.title}
         description={article.description}
+        onClick={article}
         />
       ))}
     </div>

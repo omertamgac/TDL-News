@@ -5,6 +5,7 @@ import Main from "./Components/Main";
 import Category from "./pages/CategoryResult";
 import Search from "./pages/SearchResult";
 import { Routes, Route } from 'react-router-dom';
+import Details from './pages/Details';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/category" element={<Category />} />
+        <Route path="/details" element={<Details />} />
         <Route path="/search" element={<Search />} />
       </Routes>
       <Footer />

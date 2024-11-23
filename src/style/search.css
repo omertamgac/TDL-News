@@ -1,3 +1,6 @@
+.mb-4 {
+  margin-bottom: 1.5rem; /* Kartların arası boşluk */
+}
 .notFoundContainer {
     text-align: center;
     padding: 50px;
@@ -6,15 +9,13 @@
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     color: white;
     max-width: 600px;
-    margin: 50px auto; /* Üstte 50px boşluk bırakır ve yatayda ortalar */
+    margin: 50px auto; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center; 
     height: calc(100vh - 100px); 
-}
-
-  
+}  
   .notFoundIcon {
     font-size: 8rem;
     margin-bottom: 35px;
